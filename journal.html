@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering Journal | Umakant Sharma</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .journal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-top: 40px; }
+        .journal-card { padding: 30px; border: 1px solid var(--card-border); background: var(--card-bg); border-radius: 20px; transition: var(--transition-smooth); }
+        .journal-card:hover { border-color: var(--accent-primary); transform: translateY(-5px); }
+    </style>
+</head>
+<body>
+    <div class="glow-bg"><div class="glow-orb orb-1"></div><div class="glow-orb orb-2"></div></div>
+
+    <div class="container" style="padding: 60px 20px; max-width: 1200px;">
+        <a href="index.html" class="nav-item" style="display:inline-block; margin-bottom: 40px;">← Back to Hub</a>
+        
+        <h1>Engineering Journal</h1>
+        <p style="color: var(--text-secondary); margin-bottom: 40px;">Technical decisions, trade-offs, and lessons learned.</p>
+
+        <div class="journal-grid">
+            <article class="journal-card">
+                <h3>Lesson 1: MERN vs. SQL</h3>
+                <p>Why I traded strict data integrity for schema flexibility in my AI engine.</p>
+            </article>
+            <article class="journal-card">
+                <h3>Lesson 2: The Async/Await Trap</h3>
+                <p>How I debugged a race condition that prevented API data from rendering.</p>
+            </article>
+            <article class="journal-card">
+                <h3>Lesson 3: Securing AI Keys</h3>
+                <p>Learning the importance of .env files to prevent API key exposure.</p>
+            </article>
+            <article class="journal-card">
+                <h3>Lesson 4: WebSockets Explained</h3>
+                <p>Understanding the "Real-Time" bridge between Client and Server.</p>
+            </article>
+            <article class="journal-card">
+                <h3>Lesson 5: Why DSA Matters</h3>
+                <p>Applying HashMaps to optimize search speed in my fitness tracker app.</p>
+            </article>
+        </div>
+    </div>
+</body>
+</html>
