@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Umakant Sharma | Full-Stack &amp; AI Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050811;
+      --card-bg: #090e1a;
+      --card-inner: #070d1a;
+      --card-border: #172338;
+      --card-border-hover: #00d2ff;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --accent-cyan: #00d2ff;
+      --accent-sky: #38bdf8;
+      --accent-blue: #2563eb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 1.25rem; }
+    .handwritten { font-family: 'Caveat', cursive; }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background-color: rgba(5, 8, 17, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+      height: 76px;
+      display: flex;
+      align-items: center;
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+    .brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .brand-logo {
+      width: 38px; height: 38px;
+      background: linear-gradient(135deg, #0c162d, #080d1b);
+      border: 1px solid rgba(0, 210, 255, 0.45);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent-cyan); font-size: 1.15rem; font-weight: 900;
+      box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+    }
+    .brand-name { font-weight: 800; font-size: 1.1rem; letter-spacing: -0.01em; color: #fff; }
+
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
+    .nav-link {
+      font-size: 0.85rem; font-weight: 500; color: var(--text-muted);
+      transition: color 0.15s ease;
+    }
+    .nav-link.active {
+      color: var(--accent-cyan); border-bottom: 2px solid var(--accent-cyan); padding-bottom: 2px;
+    }
+    .nav-link:hover { color: var(--accent-cyan); }
+
+    .btn-pill {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      font-size: 0.8rem; font-weight: 600; border-radius: 9999px; padding: 0.5rem 1.25rem;
+      border: 1px solid rgba(0, 210, 255, 0.4); background: #0b1222; color: #fff;
+      transition: all 0.2s ease; cursor: pointer;
+    }
+    .btn-pill:hover {
+      border-color: var(--accent-cyan); box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 4.5rem 0 5rem;
+      border-bottom: 1px solid var(--card-border);
+      position: relative;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.35rem 0.95rem; border-radius: 9999px;
+      border: 1px solid rgba(56, 189, 248, 0.4); background: rgba(12, 74, 110, 0.3);
+      font-size: 0.75rem; font-weight: 600; color: #7dd3fc; margin-bottom: 1.25rem;
+    }
+    .hero-title {
+      font-size: 3.85rem; font-weight: 900; letter-spacing: -0.03em; line-height: 1.08;
+      color: #ffffff; margin-bottom: 1.25rem;
+    }
+    .hero-title-accent {
+      background: linear-gradient(90deg, #00d2ff, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 35px rgba(0, 210, 255, 0.4);
+    }
+    .hero-sub {
+      font-size: 1.1rem; color: #cbd5e1; line-height: 1.6; max-width: 580px; margin-bottom: 1.5rem;
+    }
+    .hero-meta-row {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem;
+      font-size: 0.85rem; color: #94a3b8; font-weight: 500; margin-bottom: 1.5rem;
+    }
+    .hero-meta-row a:hover { color: var(--accent-cyan); }
+
+    .tech-pill-row {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem;
+    }
+    .tech-pill-oval {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.35rem 0.85rem; border-radius: 9999px;
+      border: 1px solid #1e293b; background: #090e1a;
+      font-size: 0.75rem; color: #e2e8f0; font-weight: 500;
+    }
+
+    .hero-action-row {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 1rem;
+    }
+
+    .project-feature-pill {
+      position: relative;
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.55rem 1.1rem; border-radius: 9999px;
+      border: 1px solid rgba(0, 210, 255, 0.5);
+      background: linear-gradient(90deg, #0c162d, #091124);
+      box-shadow: 0 0 20px rgba(0, 210, 255, 0.2);
+      cursor: pointer; transition: all 0.2s ease;
+    }
+    .project-feature-pill:hover { border-color: var(--accent-cyan); }
+    .feature-dot {
+      position: absolute; bottom: -2px; left: -2px;
+      width: 12px; height: 12px; border-radius: 50%; background: var(--accent-cyan);
+      box-shadow: 0 0 10px var(--accent-cyan);
+    }
+
+    .btn-gradient {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      font-size: 0.875rem; font-weight: 700; border-radius: 9999px; padding: 0.7rem 1.6rem;
+      background: linear-gradient(90deg, #2563eb, #00d2ff); color: #fff;
+      box-shadow: 0 0 25px rgba(0, 210, 255, 0.35); transition: all 0.2s ease;
+    }
+    .btn-gradient:hover { transform: translateY(-1px); box-shadow: 0 0 35px rgba(0, 210, 255, 0.5); }
+
+    .btn-dark {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      font-size: 0.875rem; font-weight: 600; border-radius: 9999px; padding: 0.7rem 1.4rem;
+      border: 1px solid #334155; background: #090e1a; color: #e2e8f0;
+      transition: all 0.2s ease;
+    }
+    .btn-dark:hover { border-color: rgba(0, 210, 255, 0.6); color: var(--accent-cyan); }
+
+    /* Portrait with Glowing Halo Ring */
+    .halo-wrapper {
+      position: relative;
+      width: 380px; height: 380px;
+      margin: 0 auto;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .halo-ring {
+      position: absolute; inset: 0;
+      border-radius: 50%;
+      border: 2px solid rgba(0, 210, 255, 0.85);
+      box-shadow: 0 0 90px rgba(0, 210, 255, 0.45);
+    }
+    .portrait-circle {
+      position: relative;
+      width: 330px; height: 330px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+    }
+    .portrait-circle img {
+      width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;
+    }
+    .handwritten-label {
+      position: absolute; top: -5px; right: -10px;
+      font-family: 'Caveat', cursive; font-size: 1.85rem; color: #7dd3fc;
+      transform: rotate(10deg); text-shadow: 0 0 10px rgba(0, 210, 255, 0.7);
+      display: flex; flex-direction: column; align-items: center; line-height: 0.9;
+    }
+
+    /* Section Common */
+    section { padding: 5rem 0; border-bottom: 1px solid var(--card-border); }
+    .sec-badge {
+      display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.75rem;
+      font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--accent-cyan); margin-bottom: 0.5rem;
+      background: rgba(0, 210, 255, 0.1); border: 1px solid rgba(0, 210, 255, 0.25);
+      padding: 0.25rem 0.75rem; border-radius: 9999px;
+    }
+    .sec-title { font-size: 2.5rem; font-weight: 900; letter-spacing: -0.02em; color: #fff; margin-bottom: 0.75rem; }
+    .sec-desc { font-size: 0.95rem; color: var(--text-muted); max-width: 600px; margin-bottom: 3rem; }
+
+    /* Middle Metrics & What I Do Strip */
+    .metrics-bar {
+      padding: 3.5rem 0 3.5rem;
+      border-bottom: 1px solid var(--card-border);
+      background: #060a16;
+    }
+    .metrics-grid {
+      display: grid; grid-template-columns: 1.3fr 1fr; gap: 2.5rem; align-items: stretch;
+    }
+    .stats-row {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; align-items: center;
+    }
+    .stat-box { display: flex; flex-direction: column; align-items: flex-start; gap: 0.65rem; }
+    .stat-icon-circle {
+      width: 44px; height: 44px; border-radius: 50%;
+      border: 1px solid rgba(0, 210, 255, 0.4); background: #091124;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent-cyan); font-size: 0.9rem; font-weight: 800; font-family: monospace;
+      box-shadow: 0 0 15px rgba(0, 210, 255, 0.15);
+    }
+    .stat-val { font-size: 1.95rem; font-weight: 900; color: #fff; letter-spacing: -0.02em; }
+    .stat-lbl { font-size: 0.75rem; font-weight: 600; color: #e2e8f0; line-height: 1.3; }
+    .stat-sub { font-size: 0.68rem; color: #64748b; }
+
+    .what-i-do-card {
+      border-radius: 20px; border: 1px solid rgba(0, 210, 255, 0.4);
+      background: linear-gradient(135deg, #0c162e, #070d1c);
+      padding: 1.75rem; display: flex; flex-direction: column; justify-content: space-between;
+      box-shadow: 0 0 30px rgba(0, 210, 255, 0.15);
+    }
+    .what-title { font-size: 1rem; font-weight: 800; color: var(--accent-cyan); display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.65rem; }
+    .what-desc { font-size: 0.85rem; color: #cbd5e1; line-height: 1.6; }
+    .what-handwritten {
+      font-family: 'Caveat', cursive; font-size: 1.35rem; color: #7dd3fc;
+      text-align: right; margin-top: 1rem; display: flex; justify-content: flex-end; align-items: center; gap: 0.35rem;
+    }
+
+    /* Tech Stack Row */
+    .tech-stack-row {
+      padding-top: 2.5rem; margin-top: 2rem; border-top: 1px solid #172338;
+    }
+    .tech-heading {
+      font-size: 1.1rem; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.25rem;
+    }
+    .tech-icons-list { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; }
+    .tech-icon-square {
+      width: 44px; height: 44px; border-radius: 12px;
+      border: 1px solid #1e293b; background: #090e1a;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s ease; cursor: pointer;
+    }
+    .tech-icon-square:hover {
+      border-color: var(--accent-cyan); box-shadow: 0 0 15px rgba(0, 210, 255, 0.3); transform: translateY(-2px);
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;
+    }
+    .project-card {
+      background-color: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; overflow: hidden; display: flex; flex-direction: column;
+      transition: all 0.25s ease;
+    }
+    .project-card:hover {
+      border-color: var(--accent-cyan); box-shadow: 0 0 30px rgba(0, 210, 255, 0.18); transform: translateY(-2px);
+    }
+    .project-mockup {
+      width: 100%; aspect-ratio: 16 / 9; background: #070b16; border-bottom: 1px solid var(--card-border);
+      padding: 1.25rem; font-family: monospace; font-size: 0.72rem;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .project-card-body {
+      padding: 1.75rem; display: flex; flex-direction: column; flex: 1; gap: 1rem;
+    }
+    .p-title { font-size: 1.35rem; font-weight: 800; color: #fff; }
+    .p-sub { font-size: 0.75rem; font-weight: 700; color: var(--accent-cyan); }
+    .p-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+    .p-highlights { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.8rem; color: #cbd5e1; }
+    .p-highlights li::before { content: "• "; color: var(--accent-cyan); font-weight: bold; }
+    .p-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+    .p-tag {
+      background-color: #0c1426; border: 1px solid var(--card-border);
+      color: #e2e8f0; font-size: 0.7rem; padding: 0.2rem 0.55rem; border-radius: 6px;
+    }
+    .p-actions {
+      display: flex; align-items: center; gap: 0.75rem; padding-top: 1rem;
+      border-top: 1px solid #172338; margin-top: auto;
+    }
+
+    /* About Section */
+    .about-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2.5rem; }
+    .bento-card {
+      background-color: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px;
+      padding: 1.75rem; margin-bottom: 1.5rem;
+    }
+    .bento-title { font-family: monospace; font-size: 0.75rem; text-transform: uppercase; color: var(--accent-cyan); font-weight: 700; margin-bottom: 0.75rem; }
+
+    /* Contact Section */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 2.5rem; }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-label { display: block; font-size: 0.75rem; font-weight: 700; color: var(--text-muted); margin-bottom: 0.4rem; }
+    .form-input, .form-textarea {
+      width: 100%; background-color: #060a14; border: 1px solid #1e293b; border-radius: 10px;
+      padding: 0.75rem 1rem; font-size: 0.85rem; color: #fff; font-family: inherit; outline: none; transition: border-color 0.15s ease;
+    }
+    .form-input:focus, .form-textarea:focus { border-color: var(--accent-cyan); box-shadow: 0 0 10px rgba(0, 210, 255, 0.25); }
+
+    /* Footer */
+    footer {
+      padding: 2.5rem 0; border-top: 1px solid var(--card-border); font-size: 0.8rem; color: var(--text-dim);
+      background: #050811;
+    }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; }
+
+    @media (max-width: 860px) {
+      .nav-links, .btn-pill { display: none; }
+      .hero-grid, .metrics-grid, .about-grid, .projects-grid, .contact-grid { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .hero-title { font-size: 2.6rem; }
+      .footer-inner { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  
+    /* Interactive Cyan Cursor Light Dot */
+    #cursor-dot {
+      pointer-events: none;
+      position: fixed;
+      z-index: 9999;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #00d2ff;
+      box-shadow: 0 0 14px #00d2ff, 0 0 25px rgba(0, 210, 255, 0.6);
+      transform: translate(-50%, -50%);
+      transition: width 0.18s ease, height 0.18s ease, background-color 0.18s ease, border 0.18s ease;
+      display: none;
+    }
+    #cursor-glow {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9998;
+      background: radial-gradient(400px circle at var(--mouse-x, -500px) var(--mouse-y, -500px), rgba(0, 210, 255, 0.07), transparent 80%);
+      display: none;
+    }
+    #cursor-dot.hovered {
+      width: 28px;
+      height: 28px;
+      background-color: rgba(0, 210, 255, 0.2);
+      border: 1.5px solid rgba(0, 210, 255, 0.9);
+      box-shadow: 0 0 30px rgba(0, 210, 255, 0.5);
+    }
+    @media (pointer: fine) {
+      #cursor-dot, #cursor-glow { display: block; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Interactive Cyan Cursor Dot & Ambient Glow -->
+  <div id="cursor-glow"></div>
+  <div id="cursor-dot"></div>
+
+
+  <!-- Header -->
+  <header>
+    <div class="container nav-inner">
+      <a href="#home" class="brand">
+        <div class="brand-logo">U</div>
+        <span class="brand-name">Umakant Sharma</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+      <div style="display:flex; align-items:center; gap:0.75rem;">
+        <a href="https://drive.google.com/file/d/1EBh1nkZ-Wt-X9nT7rVlTTR-VQOPEtGmC/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-pill">
+          <span>📥 Resume / CV</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section (Exactly matching image_c1e4c9.jpg) -->
+  <section id="home" class="hero">
+    <div class="container hero-grid">
+      <!-- Left Column -->
+      <div>
+        <div class="hero-badge">
+          <span>🎓</span>
+          <span>B.Tech CSE Graduate 2026</span>
+        </div>
+
+        <h1 class="hero-title">
+          Full-Stack &amp; <span class="hero-title-accent">AI Engineer</span>
+        </h1>
+
+        <p class="hero-sub">
+          Building intelligent web applications with modern technologies and AI to solve real-world problems.
+        </p>
+
+        <!-- Meta Location & Profiles Row -->
+        <div class="hero-meta-row">
+          <span>📍 Noida, India</span>
+          <a href="https://github.com/umakantuk22" target="_blank" rel="noopener noreferrer">🐙 GitHub</a>
+          <a href="https://www.linkedin.com/in/umakant-sharma-655345361/" target="_blank" rel="noopener noreferrer"><span style="color:#38bdf8; font-weight:bold;">in</span> LinkedIn</a>
+          <a href="https://leetcode.com/u/Umakantsharma/" target="_blank" rel="noopener noreferrer">⚡ LeetCode</a>
+        </div>
+
+        <!-- Tech Badges Row -->
+        <div class="tech-pill-row">
+          <div class="tech-pill-oval"><span style="color:#38bdf8; font-weight:bold;">⚛️</span> MERN Stack</div>
+          <div class="tech-pill-oval"><span>☕</span> Java</div>
+          <div class="tech-pill-oval"><span>🐍</span> Python</div>
+          <div class="tech-pill-oval"><span style="color:#38bdf8; font-weight:bold;">🔗</span> LangChain</div>
+          <div class="tech-pill-oval"><span style="color:#c084fc; font-weight:bold;">🕸️</span> LangGraph</div>
+        </div>
+
+        <!-- Action Row -->
+        <div class="hero-action-row">
+          <!-- Featured Project Badge Pill -->
+          <a href="https://uk-resume-copilot.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-feature-pill" style="text-decoration:none;">
+            <span style="font-size:1.1rem;">✨</span>
+            <div>
+              <div style="font-size:0.75rem; font-weight:800; color:#fff; display:flex; align-items:center; gap:0.25rem;">
+                <span>AI Resume Copilot Pro</span>
+                <span style="font-size:0.65rem;">↗</span>
+              </div>
+              <div style="font-size:0.65rem; color:#38bdf8; font-family:monospace;">
+                Live Project • Top 1% Developer Studio
+              </div>
+            </div>
+            <div class="feature-dot"></div>
+          </a>
+
+          <a href="#projects" class="btn-gradient">
+            <span>View Projects</span>
+            <span>→</span>
+          </a>
+
+          <a href="#contact" class="btn-dark">
+            <span>✉</span>
+            <span>Contact Me</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Umakant's Portrait with Glowing Neon Halo Ring -->
+      <div>
+        <div class="halo-wrapper">
+          <div class="halo-ring"></div>
+          <div class="portrait-circle">
+            <img src="data:image/jpeg;base64,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" alt="Umakant Sharma" style="width:100%; height:100%; object-fit:cover; object-position:top;">
+          </div>
+          <!-- Handwritten Cursive Label: Umakant Sharma ⤷ -->
+          <div class="handwritten-label">
+            <span>Umakant</span>
+            <span>Sharma</span>
+            <span style="font-size:2rem; margin-top:-0.3rem;">⤷</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Middle Metrics & What I Do Strip (Exactly matching image_c1e4c9.jpg) -->
+  <section class="metrics-bar">
+    <div class="container">
+      <div class="metrics-grid">
+        <!-- 4 Stat Boxes -->
+        <div class="stats-row">
+          <div class="stat-box">
+            <div class="stat-icon-circle">&lt;/&gt;</div>
+            <div>
+              <div class="stat-val">150+</div>
+              <div class="stat-lbl">DSA Problems</div>
+              <div class="stat-sub">(LeetCode)</div>
+            </div>
+          </div>
+
+          <div class="stat-box">
+            <div class="stat-icon-circle">🚀</div>
+            <div>
+              <div class="stat-val">4+</div>
+              <div class="stat-lbl">Live Systems</div>
+              <div class="stat-sub">(Vercel + Render)</div>
+            </div>
+          </div>
+
+          <div class="stat-box">
+            <div class="stat-icon-circle">🎓</div>
+            <div>
+              <div class="stat-val">2026</div>
+              <div class="stat-lbl">B.Tech CSE Graduate</div>
+              <div class="stat-sub">(GLA University)</div>
+            </div>
+          </div>
+
+          <div class="stat-box">
+            <div class="stat-icon-circle">⭐</div>
+            <div>
+              <div class="stat-val">1%</div>
+              <div class="stat-lbl">Dedicated to</div>
+              <div class="stat-sub">Continuous Learning</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- What I Do Card -->
+        <div class="what-i-do-card">
+          <div>
+            <div class="what-title">
+              <span>💡</span>
+              <span>What I Do</span>
+            </div>
+            <p class="what-desc">
+              I build scalable web applications, integrate AI solutions, work with modern tools and frameworks, and continuously learn to create meaningful impact through technology.
+            </p>
+          </div>
+          <div class="what-handwritten">
+            <span>Let's build something great!</span>
+            <span>⤷</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tech Stack Row matching image_c1e4c9.jpg -->
+      <div id="skills" class="tech-stack-row">
+        <div class="tech-heading">
+          <span style="color:var(--accent-cyan);">🗂️</span>
+          <span>My Tech Stack</span>
+        </div>
+        <div class="tech-icons-list">
+          <div class="tech-icon-square" title="React.js"><span style="color:#00d2ff; font-size:1.3rem;">⚛️</span></div>
+          <div class="tech-icon-square" title="Node.js"><span style="color:#22c55e; font-family:monospace; font-weight:bold;">JS</span></div>
+          <div class="tech-icon-square" title="MongoDB"><span style="font-size:1.3rem;">🍃</span></div>
+          <div class="tech-icon-square" title="JavaScript"><span style="background:#f59e0b; color:#000; font-family:monospace; font-size:0.75rem; font-weight:bold; padding:2px 4px; border-radius:3px;">JS</span></div>
+          <div class="tech-icon-square" title="TypeScript"><span style="background:#0ea5e9; color:#fff; font-family:monospace; font-size:0.75rem; font-weight:bold; padding:2px 4px; border-radius:3px;">TS</span></div>
+          <div class="tech-icon-square" title="Python"><span style="font-size:1.2rem;">🐍</span></div>
+          <div class="tech-icon-square" title="Java"><span style="font-size:1.2rem;">☕</span></div>
+          <div class="tech-pill-oval" style="padding:0.4rem 1rem; border-color:rgba(0,210,255,0.4);"><span style="color:#00d2ff;">🔗</span> LangChain</div>
+          <div class="tech-pill-oval" style="padding:0.4rem 1rem; border-color:rgba(192,132,252,0.4);"><span style="color:#c084fc;">🕸️</span> LangGraph</div>
+          <div class="tech-pill-oval" style="padding:0.4rem 1rem; border-color:rgba(249,115,22,0.4);"><span style="color:#f97316;">🔶</span> Git</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects -->
+  <section id="projects">
+    <div class="container">
+      <div class="sec-badge">✨ Portfolio Showcase</div>
+      <h2 class="sec-title">Featured Projects &amp; Systems.</h2>
+      <p class="sec-desc">
+        Full-stack platforms, LangChain RAG architectures, and real-time distributed applications.
+      </p>
+
+      <div class="projects-grid">
+        <!-- 0. NexusOps -->
+        <article class="project-card">
+          <div class="project-mockup">
+            <div style="display:flex; justify-content:space-between; border-bottom:1px solid #172338; padding-bottom:0.4rem;">
+              <span style="color:var(--text-dim);">gateway:action-validator</span>
+              <span style="color:var(--accent-cyan); font-weight:700;">TENANT ISOLATED</span>
+            </div>
+            <div style="padding:0.4rem 0; display:flex; flex-direction:column; gap:0.25rem;">
+              <span style="color:#fff;">Domain: &quot;Revenue &amp; Customer Operations&quot;</span>
+              <span style="color:#38bdf8;">&gt; AI Risk Classification: Tier-1 (Approval Flow)</span>
+              <span style="color:#c084fc;">&gt; Outbox Queue: Idempotent • 21 Automated Tests</span>
+            </div>
+            <div style="border-top:1px solid #172338; padding-top:0.4rem; display:flex; justify-content:space-between; color:var(--text-dim); font-size:0.65rem;">
+              <span>RBAC + JWT Enforced</span>
+              <span style="color:var(--accent-cyan); font-weight:700;">LIVE ON RENDER</span>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <div>
+              <div class="p-title">NexusOps</div>
+              <div class="p-sub">AI-Native Revenue &amp; Customer Operations Platform</div>
+            </div>
+            <div class="p-desc">Multi-tenant SaaS platform for revenue and customer operations featuring organization-level tenant isolation, RBAC, CRM workflows, and an AI Action Gateway with automated approval controls.</div>
+            <ul class="p-highlights">
+              <li>Built multi-tenant SaaS platform for revenue and customer operations with organization-level isolation, RBAC, authentication, CRM workflows, and secure REST APIs</li>
+              <li>Designed an AI Action Gateway with tool validation, risk classification, approval workflows, action expiry, idempotency, and audit trails for controlled AI operations</li>
+              <li>Implemented tenant-aware authorization, security middleware, request validation, rate limiting, health/readiness endpoints, and structured operational logging</li>
+              <li>Implemented outbox-style workflow processing with retries, dead-letter handling, idempotency, and entitlement/usage controls, backed by 21 automated domain and security tests</li>
+            </ul>
+            <div class="p-tags">
+              <span class="p-tag">Node.js</span><span class="p-tag">REST APIs</span><span class="p-tag">JWT</span><span class="p-tag">RBAC</span><span class="p-tag">Docker</span><span class="p-tag">AI Workflows</span><span class="p-tag">Prisma</span>
+            </div>
+            <div class="p-actions">
+              <a href="https://nexusops-kwz5.onrender.com" target="_blank" rel="noopener noreferrer" class="btn-gradient" style="padding:0.4rem 1.1rem; font-size:0.75rem;">Live Demo ↗</a>
+              <a href="https://github.com/umakantuk22/nexusops" target="_blank" rel="noopener noreferrer" class="btn-dark" style="padding:0.4rem 1rem; font-size:0.75rem;">GitHub ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 1. AI Resume Copilot Pro -->
+        <article class="project-card">
+          <div class="project-mockup">
+            <div style="display:flex; justify-content:space-between; border-bottom:1px solid #172338; padding-bottom:0.4rem;">
+              <span style="color:var(--text-dim);">pipeline:rag/langchain-match</span>
+              <span style="color:var(--accent-cyan); font-weight:700;">CACHE HIT (SHA-256)</span>
+            </div>
+            <div style="padding:0.4rem 0; display:flex; flex-direction:column; gap:0.25rem;">
+              <span style="color:#fff;">Role: &quot;Full-Stack &amp; AI Engineer&quot;</span>
+              <span style="color:#38bdf8;">&gt; Semantic Match: 96.4% • LangChain Pipeline</span>
+              <span style="color:#c084fc;">&gt; Failover: Primary Gemini &rarr; Backup Groq</span>
+            </div>
+            <div style="border-top:1px solid #172338; padding-top:0.4rem; display:flex; justify-content:space-between; color:var(--text-dim); font-size:0.65rem;">
+              <span>Bulk Recommendations: 100+</span>
+              <span style="color:var(--accent-cyan); font-weight:700;">TOP 1% STUDIO</span>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <div>
+              <div class="p-title">AI Resume Copilot Pro</div>
+              <div class="p-sub">RAG-Driven Resume Optimization &amp; Multi-Portal Job Engine</div>
+            </div>
+            <div class="p-desc">Modular full-stack AI platform analyzing resumes against targeted job descriptions using RAG semantic matching, LangChain orchestration, and multi-model failover.</div>
+            <ul class="p-highlights">
+              <li>Implemented Retrieval-Augmented Generation (RAG) pipeline to enhance contextual accuracy of resume matching</li>
+              <li>Developed multi-model LLM routing layer with failover clustering to ensure 100% prompt response uptime</li>
+              <li>Engineered SHA-256 in-memory caching with TTL eviction to eliminate redundant processing and reduce API costs</li>
+              <li>Constructed automated multi-portal job recommendation pipeline generating 100+ listings with CSV export</li>
+            </ul>
+            <div class="p-tags">
+              <span class="p-tag">React</span><span class="p-tag">Node.js</span><span class="p-tag">Express</span><span class="p-tag">MongoDB</span><span class="p-tag">RAG</span><span class="p-tag">LangChain</span><span class="p-tag">LLM APIs</span><span class="p-tag">Vercel</span>
+            </div>
+            <div class="p-actions">
+              <a href="https://uk-resume-copilot.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-gradient" style="padding:0.4rem 1.1rem; font-size:0.75rem;">Live Demo ↗</a>
+              <a href="https://github.com/umakantuk22" target="_blank" rel="noopener noreferrer" class="btn-dark" style="padding:0.4rem 1rem; font-size:0.75rem;">GitHub ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2. Cult Fitness App -->
+        <article class="project-card">
+          <div class="project-mockup">
+            <div style="display:flex; justify-content:space-between; border-bottom:1px solid #172338; padding-bottom:0.4rem;">
+              <span style="color:var(--text-dim);">api/v1/fitness/classes</span>
+              <span style="color:var(--accent-cyan); font-weight:700;">200 OK • 18ms</span>
+            </div>
+            <div style="padding:0.4rem 0; display:flex; flex-direction:column; gap:0.25rem;">
+              <span style="color:#fff;">Session: &quot;HIIT Conditioning&quot;</span>
+              <span>Trainer: Certified Coach • 18/20 Slots</span>
+              <span style="color:var(--accent-cyan);">auth_mode: &quot;Bearer JWT (RS256)&quot;</span>
+            </div>
+            <div style="border-top:1px solid #172338; padding-top:0.4rem; display:flex; justify-content:space-between; color:var(--text-dim); font-size:0.65rem;">
+              <span>MongoDB Atlas Cluster</span>
+              <span style="color:var(--accent-cyan); font-weight:700;">LIVE ON VERCEL</span>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <div>
+              <div class="p-title">Cult Fitness App</div>
+              <div class="p-sub">Full-Stack Fitness Class Booking &amp; Workout Management</div>
+            </div>
+            <div class="p-desc">A full-stack fitness application engineered with the MERN stack for booking workout sessions and managing personal training routines.</div>
+            <ul class="p-highlights">
+              <li>Engineered secure JWT-based authentication and authorization with protected route middleware</li>
+              <li>Designed RESTful API endpoints for class scheduling, trainer allocations, and user reservations</li>
+              <li>Constructed a responsive, mobile-first frontend in React.js with real-time booking updates</li>
+            </ul>
+            <div class="p-tags">
+              <span class="p-tag">React.js</span><span class="p-tag">Node.js</span><span class="p-tag">Express.js</span><span class="p-tag">MongoDB</span><span class="p-tag">JWT Auth</span><span class="p-tag">REST APIs</span>
+            </div>
+            <div class="p-actions">
+              <a href="https://cult-fitness-ten.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-gradient" style="padding:0.4rem 1.1rem; font-size:0.75rem;">Live Demo ↗</a>
+              <a href="https://github.com/umakantuk22" target="_blank" rel="noopener noreferrer" class="btn-dark" style="padding:0.4rem 1rem; font-size:0.75rem;">GitHub ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. YouTube Watch Party -->
+        <article class="project-card">
+          <div class="project-mockup">
+            <div style="display:flex; justify-content:space-between; border-bottom:1px solid #172338; padding-bottom:0.4rem;">
+              <span style="color:var(--text-dim);">socket.io/watch-room#482</span>
+              <span style="color:var(--accent-cyan); font-weight:700;">SYNCED • 8 Peers</span>
+            </div>
+            <div style="padding:0.4rem 0; display:flex; flex-direction:column; gap:0.25rem;">
+              <span style="color:var(--accent-cyan);">&gt; event: &quot;player:seek&quot; (t: 04:12.450)</span>
+              <span>&gt; broadcast: state: &quot;PLAYING&quot;</span>
+              <span>&gt; latency_drift: &plusmn;12ms (Target: &lt;50ms)</span>
+            </div>
+            <div style="border-top:1px solid #172338; padding-top:0.4rem; display:flex; justify-content:space-between; color:var(--text-dim); font-size:0.65rem;">
+              <span>Host: Authenticated Leader</span>
+              <span style="color:var(--accent-cyan); font-weight:700;">LIVE ON VERCEL</span>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <div>
+              <div class="p-title">YouTube Watch Party System</div>
+              <div class="p-sub">Real-Time Synchronized Video Streaming with WebSockets</div>
+            </div>
+            <div class="p-desc">Synchronized video streaming web application enabling multiple participants to watch YouTube videos in real-time rooms with sub-second state parity.</div>
+            <ul class="p-highlights">
+              <li>Implemented bidirectional WebSocket architecture with Socket.IO for synchronized play, pause, and seek events</li>
+              <li>Architected room-based permissions with Role-Based Access Control (Host, Moderator, Participant)</li>
+              <li>Integrated YouTube IFrame Player API for seamless client-side playback state synchronization</li>
+            </ul>
+            <div class="p-tags">
+              <span class="p-tag">React.js</span><span class="p-tag">WebSockets</span><span class="p-tag">Socket.IO</span><span class="p-tag">Node.js</span><span class="p-tag">Express</span><span class="p-tag">YouTube API</span>
+            </div>
+            <div class="p-actions">
+              <a href="https://youtube-watch-party-lovat.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-gradient" style="padding:0.4rem 1.1rem; font-size:0.75rem;">Live Demo ↗</a>
+              <a href="https://github.com/umakantuk22" target="_blank" rel="noopener noreferrer" class="btn-dark" style="padding:0.4rem 1rem; font-size:0.75rem;">GitHub ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4. AI Summarizer -->
+        <article class="project-card">
+          <div class="project-mockup">
+            <div style="display:flex; justify-content:space-between; border-bottom:1px solid #172338; padding-bottom:0.4rem;">
+              <span style="color:var(--text-dim);">dual-model/router</span>
+              <span style="color:var(--accent-cyan); font-weight:700;">Gemini + Groq</span>
+            </div>
+            <div style="padding:0.4rem 0; display:flex; flex-direction:column; gap:0.25rem;">
+              <span>&gt; Provider: Groq Llama-3-70b</span>
+              <span style="color:var(--accent-cyan);">&gt; Dynamic Token Boundary Chunking</span>
+              <span>&gt; Streaming: 480 tokens/sec</span>
+            </div>
+            <div style="border-top:1px solid #172338; padding-top:0.4rem; display:flex; justify-content:space-between; color:var(--text-dim); font-size:0.65rem;">
+              <span>History: MongoDB Stored</span>
+              <span style="color:var(--accent-cyan);">Dynamic Switching</span>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <div>
+              <div class="p-title">AI Summarizer Platform</div>
+              <div class="p-sub">Dynamic Multi-LLM Text Summarization Engine</div>
+            </div>
+            <div class="p-desc">Full-stack AI text summarization platform offering dynamic switching between Google Gemini and Groq with persistent user history.</div>
+            <ul class="p-highlights">
+              <li>Engineered dual-model routing architecture allowing seamless runtime switching between Gemini and Groq</li>
+              <li>Designed REST APIs for text chunking, token boundary management, and summary generation</li>
+              <li>Integrated MongoDB for persistent summary history tracking and structured export</li>
+            </ul>
+            <div class="p-tags">
+              <span class="p-tag">MERN Stack</span><span class="p-tag">Gemini API</span><span class="p-tag">Groq API</span><span class="p-tag">REST APIs</span><span class="p-tag">MongoDB</span>
+            </div>
+            <div class="p-actions">
+              <a href="https://github.com/umakantuk22" target="_blank" rel="noopener noreferrer" class="btn-dark" style="padding:0.4rem 1rem; font-size:0.75rem;">GitHub Codebase ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5. Instant Mechanic Dashboard -->
+        <article class="project-card">
+          <div class="project-mockup">
+            <div style="display:flex; justify-content:space-between; border-bottom:1px solid #172338; padding-bottom:0.4rem;">
+              <span style="color:var(--text-dim);">dispatch/relational-gateway</span>
+              <span style="color:#fff; font-weight:700;">PostgreSQL</span>
+            </div>
+            <div style="padding:0.4rem 0; display:flex; flex-direction:column; gap:0.25rem;">
+              <span>&gt; SELECT * FROM mechanic_dispatches</span>
+              <span style="color:var(--accent-cyan);">&gt; Tech #14 • Sector Noida West</span>
+              <span style="color:#38bdf8;">&gt; SLA: On-site in 14 mins</span>
+            </div>
+            <div style="border-top:1px solid #172338; padding-top:0.4rem; display:flex; justify-content:space-between; color:var(--text-dim); font-size:0.65rem;">
+              <span>Monorepo: Next.js + Express</span>
+              <span>Normalized Schema</span>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <div>
+              <div class="p-title">Instant Mechanic Dashboard</div>
+              <div class="p-sub">Vehicle Service Dispatch &amp; Operations Management</div>
+            </div>
+            <div class="p-desc">Full-stack dashboard for mechanic dispatch, vehicle maintenance tracking, and relational booking management.</div>
+            <ul class="p-highlights">
+              <li>Architected modular monorepo dividing an Express REST API backend and a Next.js client interface</li>
+              <li>Designed normalized relational database schemas on PostgreSQL for service orders and mechanics</li>
+              <li>Implemented reactive dashboard interfaces for live order status monitoring and booking workflow</li>
+            </ul>
+            <div class="p-tags">
+              <span class="p-tag">Next.js</span><span class="p-tag">Express.js</span><span class="p-tag">PostgreSQL</span><span class="p-tag">Node.js</span><span class="p-tag">REST APIs</span>
+            </div>
+            <div class="p-actions">
+              <a href="https://github.com/umakantuk22/instant-mechanic-dashboard" target="_blank" rel="noopener noreferrer" class="btn-dark" style="padding:0.4rem 1rem; font-size:0.75rem;">GitHub Codebase ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 6. GrameenCart -->
+        <article class="project-card">
+          <div class="project-mockup">
+            <div style="display:flex; justify-content:space-between; border-bottom:1px solid #172338; padding-bottom:0.4rem;">
+              <span style="color:var(--text-dim);">marketplace/d2c-catalog</span>
+              <span style="color:var(--accent-cyan); font-weight:700;">REST API Active</span>
+            </div>
+            <div style="padding:0.4rem 0; display:flex; flex-direction:column; gap:0.25rem;">
+              <span>&gt; Producer: Mathura Organic Collective</span>
+              <span style="color:var(--accent-cyan);">&gt; Checkout: Direct D2C Flow</span>
+              <span>&gt; Responsive Cart State: Synced</span>
+            </div>
+            <div style="border-top:1px solid #172338; padding-top:0.4rem; display:flex; justify-content:space-between; color:var(--text-dim); font-size:0.65rem;">
+              <span>Mobile-First 360px</span>
+              <span style="color:var(--accent-cyan);">Direct D2C</span>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <div>
+              <div class="p-title">GrameenCart</div>
+              <div class="p-sub">Direct-to-Consumer Rural Produce E-Commerce Platform</div>
+            </div>
+            <div class="p-desc">A full-stack e-commerce marketplace connecting rural agricultural producers directly with regional consumers.</div>
+            <ul class="p-highlights">
+              <li>Built responsive shopping interface with category filtering, item catalogs, and cart state management</li>
+              <li>Developed RESTful backend services managing product inventories, pricing models, and checkout workflows</li>
+              <li>Optimized mobile navigation and bundle delivery for seamless usage across 360px+ devices</li>
+            </ul>
+            <div class="p-tags">
+              <span class="p-tag">React.js</span><span class="p-tag">Node.js</span><span class="p-tag">Express.js</span><span class="p-tag">MongoDB</span><span class="p-tag">REST APIs</span>
+            </div>
+            <div class="p-actions">
+              <a href="https://github.com/umakantuk22" target="_blank" rel="noopener noreferrer" class="btn-dark" style="padding:0.4rem 1rem; font-size:0.75rem;">GitHub Codebase ↗</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container about-grid">
+      <div>
+        <div class="sec-badge">Profile &amp; Background</div>
+        <h2 class="sec-title">About Umakant Sharma.</h2>
+        <p style="font-size:0.95rem; color:var(--text-muted); line-height:1.7; margin-bottom:1rem;">
+          I am a Computer Science undergraduate at GLA University with a strong foundation in Data Structures &amp; Algorithms and hands-on experience developing production-grade web systems. My core engineering focus lies in architecting modular backends, designing robust RESTful APIs, and integrating Generative AI / LLM workflows with deterministic software patterns.
+        </p>
+        <p style="font-size:0.95rem; color:var(--text-muted); line-height:1.7; margin-bottom:1.5rem;">
+          I enjoy solving challenging engineering problems—from implementing sub-50ms caching layers and failover LLM routing to building real-time WebSocket state synchronization. I am seeking entry-level Software Engineering, Full-Stack, or AI/Backend roles where I can contribute to high-impact systems.
+        </p>
+
+        <!-- Academic Degree -->
+        <div class="bento-card">
+          <div class="bento-title">Academic Degree</div>
+          <div style="font-size:1.1rem; font-weight:800; color:#fff; margin-bottom:0.25rem;">Bachelor of Technology in Computer Science and Engineering</div>
+          <div style="font-size:0.85rem; color:#cbd5e1; margin-bottom:0.75rem;">GLA University • Mathura, India</div>
+          <span style="font-family:monospace; font-size:0.75rem; background:#0c1426; border:1px solid #1e293b; color:#38bdf8; padding:0.25rem 0.6rem; border-radius:6px;">Expected Graduation: 2022 – 2026</span>
+        </div>
+
+        <!-- LeetCode Problem Solving Card -->
+        <div class="bento-card" style="display:flex; align-items:center; justify-content:space-between; gap:1.5rem;">
+          <div>
+            <div class="bento-title">Algorithmic Problem Solving</div>
+            <div style="font-size:1.15rem; font-weight:800; color:#fff;">150+ LeetCode Problems Solved</div>
+            <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.25rem;">Arrays, dynamic programming, two pointers, trees, and hash maps</div>
+          </div>
+          <a href="https://leetcode.com/u/Umakantsharma/" target="_blank" rel="noopener noreferrer" class="btn-pill">Profile ↗</a>
+        </div>
+      </div>
+
+      <!-- Right: Technical Stack Matrix & Certifications -->
+      <div>
+        <div class="bento-card">
+          <div class="bento-title">Verified Technical Stack</div>
+          <div style="margin-bottom:1rem;">
+            <span style="font-size:0.75rem; color:var(--text-dim); display:block; margin-bottom:0.35rem;">Languages</span>
+            <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+              <span class="p-tag">Java</span><span class="p-tag">Python</span><span class="p-tag">JavaScript</span><span class="p-tag">TypeScript</span>
+            </div>
+          </div>
+          <div style="margin-bottom:1rem;">
+            <span style="font-size:0.75rem; color:var(--text-dim); display:block; margin-bottom:0.35rem;">AI &amp; Frameworks</span>
+            <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+              <span class="p-tag">LangChain</span><span class="p-tag">LangGraph</span><span class="p-tag">RAG Architecture</span><span class="p-tag">Gemini API</span><span class="p-tag">Groq API</span>
+            </div>
+          </div>
+          <div style="margin-bottom:1rem;">
+            <span style="font-size:0.75rem; color:var(--text-dim); display:block; margin-bottom:0.35rem;">Backend &amp; APIs</span>
+            <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+              <span class="p-tag">Node.js</span><span class="p-tag">Express.js</span><span class="p-tag">FastAPI</span><span class="p-tag">WebSockets</span><span class="p-tag">JWT</span>
+            </div>
+          </div>
+          <div>
+            <span style="font-size:0.75rem; color:var(--text-dim); display:block; margin-bottom:0.35rem;">Databases</span>
+            <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+              <span class="p-tag">MongoDB</span><span class="p-tag">PostgreSQL</span><span class="p-tag">MySQL</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bento-card">
+          <div class="bento-title">Verified Certifications</div>
+          <div style="display:flex; flex-direction:column; gap:0.85rem;">
+            <div style="border-bottom:1px solid #172338; padding-bottom:0.5rem;">
+              <div style="font-size:0.9rem; font-weight:700; color:#fff;">Java Programming</div>
+              <div style="font-size:0.75rem; color:var(--text-dim); font-family:monospace;">Infosys Springboard</div>
+            </div>
+            <div style="border-bottom:1px solid #172338; padding-bottom:0.5rem;">
+              <div style="font-size:0.9rem; font-weight:700; color:#fff;">Database Management System</div>
+              <div style="font-size:0.75rem; color:var(--text-dim); font-family:monospace;">NPTEL</div>
+            </div>
+            <div>
+              <div style="font-size:0.9rem; font-weight:700; color:#fff;">RESTful API Design &amp; Development</div>
+              <div style="font-size:0.75rem; color:var(--text-dim); font-family:monospace;">Udemy</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" style="background:#060a16;">
+    <div class="container">
+      <div class="sec-badge">Connect &amp; Hire</div>
+      <h2 class="sec-title">Let&apos;s Build Something Great.</h2>
+      <p class="sec-desc">
+        I am actively interviewing for software engineering roles, full-stack, and AI/backend developer opportunities. Reach out directly.
+      </p>
+
+      <div class="contact-grid">
+        <div style="background-color:var(--card-bg); border:1px solid var(--card-border); border-radius:16px; padding:2rem; display:flex; flex-direction:column; gap:1.25rem;">
+          <h3 style="font-size:1.15rem; font-weight:800; color:#fff;">Direct Channels</h3>
+          <div>
+            <span style="font-size:0.7rem; font-family:monospace; color:var(--accent-cyan); text-transform:uppercase; display:block;">Email Address</span>
+            <a href="mailto:uksharma9758uk@gmail.com" style="color:#fff; font-weight:700;">uksharma9758uk@gmail.com</a>
+          </div>
+          <div>
+            <span style="font-size:0.7rem; font-family:monospace; color:var(--accent-cyan); text-transform:uppercase; display:block;">Current Location</span>
+            <span style="color:#cbd5e1; font-weight:600;">Noida, India</span>
+          </div>
+          <div>
+            <span style="font-size:0.7rem; font-family:monospace; color:var(--accent-cyan); text-transform:uppercase; display:block;">Phone</span>
+            <span style="color:#cbd5e1; font-family:monospace;">+91-8650163800</span>
+          </div>
+          <div style="padding-top:1rem; border-top:1px solid #172338; display:flex; flex-direction:column; gap:0.5rem;">
+            <span style="font-size:0.7rem; font-family:monospace; color:var(--accent-cyan); text-transform:uppercase; display:block;">Verified Online Profiles</span>
+            <a href="https://www.linkedin.com/in/umakant-sharma-655345361/" target="_blank" rel="noopener noreferrer" style="color:var(--text-muted); font-size:0.85rem;">LinkedIn Profile ↗</a>
+            <a href="https://github.com/umakantuk22" target="_blank" rel="noopener noreferrer" style="color:var(--text-muted); font-size:0.85rem;">GitHub Profile ↗</a>
+            <a href="https://leetcode.com/u/Umakantsharma/" target="_blank" rel="noopener noreferrer" style="color:var(--text-muted); font-size:0.85rem;">LeetCode Profile ↗</a>
+          </div>
+        </div>
+
+        <div style="background-color:var(--card-bg); border:1px solid var(--card-border); border-radius:16px; padding:2rem;">
+          <h3 style="font-size:1.15rem; font-weight:800; color:#fff; margin-bottom:0.25rem;">Send an Email Message</h3>
+          <p style="font-size:0.75rem; color:var(--text-muted); margin-bottom:1.5rem;">Operates without external databases. Submitting opens your email client directly.</p>
+          <form onsubmit="handleMailto(event)">
+            <div class="form-group">
+              <label class="form-label">Your Name *</label>
+              <input type="text" id="c-name" class="form-input" placeholder="Jane Doe" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Your Email *</label>
+              <input type="email" id="c-email" class="form-input" placeholder="recruiter@company.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Subject</label>
+              <input type="text" id="c-subject" class="form-input" placeholder="Software Engineering Opportunity">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Message *</label>
+              <textarea id="c-message" rows="4" class="form-textarea" placeholder="Hello Umakant, I saw your portfolio and would love to discuss a role..." required></textarea>
+            </div>
+            <button type="submit" class="btn-gradient" style="width:100%; margin-top:0.5rem; border:none; cursor:pointer;">Send Message ↗</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <span style="font-weight:800; color:#fff;">Umakant Sharma</span> • © 2026 • Full-Stack &amp; AI Engineer • Zero Backend
+      </div>
+      <div style="display:flex; gap:1.5rem;">
+        <a href="#home" style="color:var(--text-muted);">Home</a>
+        <a href="#skills" style="color:var(--text-muted);">Skills</a>
+        <a href="#projects" style="color:var(--text-muted);">Projects</a>
+        <a href="#experience" style="color:var(--text-muted);">Experience</a>
+        <a href="#about" style="color:var(--text-muted);">About</a>
+        <a href="#contact" style="color:var(--text-muted);">Contact</a>
+        <a href="https://github.com/umakantuk22" target="_blank" rel="noopener noreferrer" style="color:var(--text-muted);">GitHub ↗</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function handleMailto(e) {
+      e.preventDefault();
+      var name = document.getElementById('c-name').value;
+      var email = document.getElementById('c-email').value;
+      var subject = document.getElementById('c-subject').value || ('Portfolio Message from ' + name);
+      var message = document.getElementById('c-message').value;
+      var body = 'Name: ' + name + '\nEmail: ' + email + '\n\nMessage:\n' + message;
+      var mailtoUrl = 'mailto:uksharma9758uk@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      window.location.href = mailtoUrl;
+    }
+  </script>
+  <script>
+
+    // Cursor Light Dot Tracker
+    (function() {
+      if (!window.matchMedia("(pointer: fine)").matches) return;
+      var dot = document.getElementById("cursor-dot");
+      var glow = document.getElementById("cursor-glow");
+      if (!dot || !glow) return;
+
+      var mouseX = -100, mouseY = -100;
+      window.addEventListener("mousemove", function(e) {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        dot.style.left = mouseX + "px";
+        dot.style.top = mouseY + "px";
+        glow.style.setProperty("--mouse-x", mouseX + "px");
+        glow.style.setProperty("--mouse-y", mouseY + "px");
+
+        var target = e.target;
+        if (target && (target.closest("a") || target.closest("button") || target.closest("input") || target.closest("textarea") || target.closest(".project-card"))) {
+          dot.classList.add("hovered");
+        } else {
+          dot.classList.remove("hovered");
+        }
+      });
+      document.addEventListener("mouseleave", function() {
+        dot.style.display = "none";
+        glow.style.display = "none";
+      });
+      document.addEventListener("mouseenter", function() {
+        dot.style.display = "block";
+        glow.style.display = "block";
+      });
+    })();
+  </script>
+
+  <!-- Portfolio AI Assistant Floating Button & Modal -->
+  <div id="ai-chat-btn" style="position:fixed; bottom:1.5rem; right:1.5rem; z-index:9000; cursor:pointer;" onclick="toggleChatbot()">
+    <div style="display:flex; align-items:center; gap:0.6rem; padding:0.75rem 1.25rem; border-radius:9999px; background:linear-gradient(135deg, #0b162f 0%, #071022 100%); border:1px solid rgba(0, 210, 255, 0.8); box-shadow:0 0 25px rgba(0, 210, 255, 0.4); color:#fff; font-size:0.85rem; font-weight:700;">
+      <span style="position:relative; display:flex; height:10px; width:10px;">
+        <span style="position:absolute; width:100%; height:100%; border-radius:50%; background:#00d2ff; opacity:0.75; animation:ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;"></span>
+        <span style="position:relative; width:10px; height:10px; border-radius:50%; background:#00d2ff;"></span>
+      </span>
+      <span style="color:#38bdf8; font-family:monospace;">🤖 Ask Umakant AI</span>
+      <span id="chat-toggle-icon" style="color:#94a3b8; font-size:0.8rem; margin-left:0.25rem;">💬</span>
+    </div>
+  </div>
+
+  <div id="ai-chat-modal" style="display:none; position:fixed; bottom:5rem; right:1.5rem; z-index:9001; width:360px; max-width:90vw; background:rgba(6, 12, 26, 0.96); backdrop-filter:blur(16px); border:1px solid rgba(0, 210, 255, 0.4); border-radius:1rem; box-shadow:0 0 40px rgba(0, 210, 255, 0.25); overflow:hidden; font-family:-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif;">
+    <div style="background:#091224; border-bottom:1px solid #172338; padding:0.75rem 1rem; display:flex; justify-content:space-between; align-items:center;">
+      <div style="display:flex; align-items:center; gap:0.6rem;">
+        <div style="width:32px; height:32px; border-radius:8px; background:rgba(0, 210, 255, 0.15); border:1px solid rgba(0, 210, 255, 0.4); display:flex; align-items:center; justify-content:center; font-size:1rem;">🤖</div>
+        <div>
+          <div style="font-weight:700; font-size:0.85rem; color:#fff; display:flex; align-items:center; gap:0.4rem;">
+            Umakant Sharma AI
+            <span style="width:6px; height:6px; border-radius:50%; background:#00d2ff; display:inline-block;"></span>
+          </div>
+          <div style="font-size:0.65rem; color:#38bdf8; font-family:monospace;">Scope-Restricted Portfolio Bot</div>
+        </div>
+      </div>
+      <button onclick="toggleChatbot()" style="background:none; border:none; color:#94a3b8; font-size:1.1rem; cursor:pointer; padding:0.2rem 0.5rem;">✕</button>
+    </div>
+
+    <!-- Suggested prompt chips -->
+    <div style="background:#070d1a; border-bottom:1px solid #141e30; padding:0.5rem 0.75rem; display:flex; gap:0.4rem; overflow-x:auto;">
+      <button onclick="sendQuickPrompt('Tell me about NexusOps & AI Gateway')" style="white-space:nowrap; font-size:0.7rem; border-radius:9999px; background:rgba(0, 210, 255, 0.1); border:1px solid rgba(0, 210, 255, 0.3); color:#38bdf8; padding:0.25rem 0.6rem; cursor:pointer;">⚡ NexusOps</button>
+      <button onclick="sendQuickPrompt('What are your top projects?')" style="white-space:nowrap; font-size:0.7rem; border-radius:9999px; background:rgba(0, 210, 255, 0.1); border:1px solid rgba(0, 210, 255, 0.3); color:#38bdf8; padding:0.25rem 0.6rem; cursor:pointer;">💻 Projects</button>
+      <button onclick="sendQuickPrompt('What is your tech stack?')" style="white-space:nowrap; font-size:0.7rem; border-radius:9999px; background:rgba(0, 210, 255, 0.1); border:1px solid rgba(0, 210, 255, 0.3); color:#38bdf8; padding:0.25rem 0.6rem; cursor:pointer;">🛠️ Skills</button>
+      <button onclick="sendQuickPrompt('How can I contact Umakant?')" style="white-space:nowrap; font-size:0.7rem; border-radius:9999px; background:rgba(0, 210, 255, 0.1); border:1px solid rgba(0, 210, 255, 0.3); color:#38bdf8; padding:0.25rem 0.6rem; cursor:pointer;">📬 Contact</button>
+    </div>
+
+    <!-- Chat Messages -->
+    <div id="ai-chat-messages" style="height:270px; overflow-y:auto; padding:0.85rem; display:flex; flex-direction:column; gap:0.65rem; font-size:0.78rem;">
+      <div style="align-self:flex-start; max-width:88%; background:#0c162e; border:1px solid #1d2d4a; border-radius:1rem; padding:0.6rem 0.85rem; color:#e2e8f0; line-height:1.45;">
+        👋 Hi! I\x27m Umakant\x27s AI Assistant. Ask me anything about Umakant Sharma\x27s projects, tech stack, AI workflows, or background!
+      </div>
+    </div>
+
+    <!-- Input Form -->
+    <form onsubmit="handleChatSubmit(event)" style="background:#091224; border-top:1px solid #172338; padding:0.6rem; display:flex; gap:0.5rem;">
+      <input id="ai-chat-input" type="text" placeholder="Ask about Umakant\x27s projects, skills..." style="flex:1; background:#060c18; border:1px solid #1e2d48; border-radius:0.75rem; padding:0.5rem 0.75rem; font-size:0.75rem; color:#fff; outline:none;" />
+      <button type="submit" style="width:34px; height:34px; border-radius:0.75rem; background:linear-gradient(135deg, #2563eb, #00d2ff); border:none; color:#fff; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center;">↑</button>
+    </form>
+  </div>
+
+  <style>
+    @keyframes ping {
+      75%, 100% { transform: scale(2); opacity: 0; }
+    }
+  </style>
+
+  <script>
+    function toggleChatbot() {
+      var modal = document.getElementById("ai-chat-modal");
+      var icon = document.getElementById("chat-toggle-icon");
+      if (modal.style.display === "none" || modal.style.display === "") {
+        modal.style.display = "block";
+        icon.innerText = "✕";
+        document.getElementById("ai-chat-input").focus();
+      } else {
+        modal.style.display = "none";
+        icon.innerText = "💬";
+      }
+    }
+
+    function sendQuickPrompt(text) {
+      document.getElementById("ai-chat-input").value = text;
+      handleChatSubmit(new Event("submit"));
+    }
+
+    function handleChatSubmit(e) {
+      if (e) e.preventDefault();
+      var input = document.getElementById("ai-chat-input");
+      var q = input.value.trim();
+      if (!q) return;
+
+      var messagesDiv = document.getElementById("ai-chat-messages");
+
+      // Append User message
+      var userMsg = document.createElement("div");
+      userMsg.style.cssText = "align-self:flex-end; max-width:85%; background:#00d2ff; color:#050811; font-weight:600; border-radius:1rem; padding:0.55rem 0.85rem; line-height:1.4;";
+      userMsg.innerText = q;
+      messagesDiv.appendChild(userMsg);
+      input.value = "";
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+      // Deterministic scope check
+      setTimeout(function() {
+        var lower = q.toLowerCase();
+        var isAboutUmakant =
+          lower.includes("umakant") || lower.includes("sharma") || lower.includes("you") ||
+          lower.includes("project") || lower.includes("nexus") || lower.includes("copilot") ||
+          lower.includes("resume") || lower.includes("cult") || lower.includes("youtube") ||
+          lower.includes("summariz") || lower.includes("mechanic") || lower.includes("grameen") ||
+          lower.includes("skills") || lower.includes("tech") || lower.includes("stack") ||
+          lower.includes("college") || lower.includes("university") || lower.includes("gla") ||
+          lower.includes("education") || lower.includes("experience") || lower.includes("contact") ||
+          lower.includes("email") || lower.includes("phone") || lower.includes("hire") ||
+          lower.includes("github") || lower.includes("linkedin") || lower.includes("leetcode") ||
+          lower.includes("dsa") || lower.includes("location") || lower.includes("noida") ||
+          lower.includes("who are you") || lower.includes("about") || lower.includes("live") ||
+          lower.includes("demo") || lower.includes("hi") || lower.includes("hello") || lower.includes("hey");
+
+        var botMsg = document.createElement("div");
+
+        if (!isAboutUmakant) {
+          botMsg.style.cssText = "align-self:flex-start; max-width:88%; background:rgba(127, 29, 29, 0.7); border:1px solid rgba(239, 68, 68, 0.5); border-radius:1rem; padding:0.6rem 0.85rem; color:#fecaca; line-height:1.45;";
+          botMsg.innerHTML = "⚠️ <strong>Error: Scope Restricted.</strong> I am Umakant Sharma\x27s AI Assistant and can only answer questions regarding Umakant\x27s background, technical skills, projects, experience, and contact details. Please ask a question related to Umakant!";
+        } else {
+          botMsg.style.cssText = "align-self:flex-start; max-width:88%; background:#0c162e; border:1px solid #1d2d4a; border-radius:1rem; padding:0.6rem 0.85rem; color:#e2e8f0; line-height:1.45;";
+
+          if (lower.includes("nexus") || lower.includes("revenue") || lower.includes("gateway")) {
+            botMsg.innerHTML = "🚀 <strong>NexusOps</strong> is Umakant\x27s AI-Native Revenue & Customer Operations Platform.<br><br>• <strong>Features:</strong> Multi-tenant SaaS with tenant isolation, RBAC, CRM workflows, and an AI Action Gateway with automated approval controls and audit trails.<br>• <strong>Stack:</strong> Node.js, REST APIs, JWT, RBAC, Docker, Prisma.<br>• <strong>Live App:</strong> <a href='https://nexusops-kwz5.onrender.com' target='_blank' style='color:#00d2ff; text-decoration:underline;'>nexusops-kwz5.onrender.com</a><br>• <strong>GitHub:</strong> <a href='https://github.com/umakantuk22/nexusops' target='_blank' style='color:#00d2ff; text-decoration:underline;'>github.com/umakantuk22/nexusops</a>";
+          } else if (lower.includes("resume") || lower.includes("copilot") || lower.includes("rag")) {
+            botMsg.innerHTML = "📄 <strong>AI Resume Copilot Pro</strong> is an intelligent resume tailoring engine built by Umakant.<br><br>• <strong>Features:</strong> RAG semantic matching, LangChain orchestration, SHA-256 caching for zero redundant LLM calls, and a job recommendation pipeline.<br>• <strong>Live Demo:</strong> <a href='https://uk-resume-copilot.vercel.app/' target='_blank' style='color:#00d2ff; text-decoration:underline;'>uk-resume-copilot.vercel.app</a>";
+          } else if (lower.includes("project") || lower.includes("live") || lower.includes("work")) {
+            botMsg.innerHTML = "💻 <strong>Umakant has built 7 notable engineering systems:</strong><br><br>1. <strong>NexusOps</strong> (Live on Render)<br>2. <strong>AI Resume Copilot Pro</strong> (Live on Vercel)<br>3. <strong>Cult Fitness App</strong> (Live on Vercel)<br>4. <strong>YouTube Watch Party</strong> (Live on Vercel)<br>5. <strong>AI Summarizer Platform</strong> (GitHub Codebase)<br>6. <strong>Instant Mechanic Dashboard</strong> (GitHub Codebase)<br>7. <strong>GrameenCart</strong> (GitHub Codebase)";
+          } else if (lower.includes("skill") || lower.includes("stack") || lower.includes("tech")) {
+            botMsg.innerHTML = "⚡ <strong>Umakant\x27s Core Technical Stack:</strong><br><br>• <strong>Frontend:</strong> Next.js, React, TypeScript, Tailwind CSS<br>• <strong>Backend:</strong> Node.js, Express.js, REST APIs, WebSockets, JWT, RBAC<br>• <strong>AI/LLM:</strong> LangChain, RAG architectures, Google Gemini API, Groq, Vector Embeddings<br>• <strong>Databases & DevOps:</strong> PostgreSQL, MongoDB, Prisma, Redis, Docker, Git<br>• <strong>DSA:</strong> 150+ LeetCode problems solved";
+          } else if (lower.includes("education") || lower.includes("college") || lower.includes("university") || lower.includes("gla")) {
+            botMsg.innerHTML = "🎓 <strong>Education:</strong><br><br>• <strong>Degree:</strong> Bachelor of Technology (B.Tech) in Computer Science & Engineering<br>• <strong>Institution:</strong> GLA University, Mathura (2022–2026)<br>• <strong>Location:</strong> Noida, Uttar Pradesh, India";
+          } else if (lower.includes("contact") || lower.includes("email") || lower.includes("phone") || lower.includes("hire")) {
+            botMsg.innerHTML = "📬 <strong>Get in touch with Umakant Sharma:</strong><br><br>• <strong>Email:</strong> <a href='mailto:uksharma9758uk@gmail.com' style='color:#00d2ff;'>uksharma9758uk@gmail.com</a><br>• <strong>Phone:</strong> +91-8650163800<br>• <strong>LinkedIn:</strong> <a href='https://www.linkedin.com/in/umakant-sharma-655345361/' target='_blank' style='color:#00d2ff;'>LinkedIn Profile</a><br>• <strong>GitHub:</strong> <a href='https://github.com/umakantuk22' target='_blank' style='color:#00d2ff;'>github.com/umakantuk22</a>";
+          } else {
+            botMsg.innerHTML = "👋 Umakant Sharma is a Full-Stack & AI Systems Engineer (B.Tech CSE \x2726 at GLA University, Mathura) based in Noida. Ask me about his <strong>projects (NexusOps, AI Resume Copilot)</strong>, <strong>tech stack</strong>, or <strong>contact info</strong>!";
+          }
+        }
+
+        messagesDiv.appendChild(botMsg);
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+      }, 350);
+    }
+  </script>
+
+</body>
+</html>
