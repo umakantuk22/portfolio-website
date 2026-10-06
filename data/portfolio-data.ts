@@ -41,7 +41,7 @@ export const PORTFOLIO_DATA = {
       github: "https://github.com/umakantuk22",
       linkedin: "https://www.linkedin.com/in/umakant-sharma-655345361/",
       leetcode: "https://leetcode.com/u/Umakantsharma/",
-      resumePdf: "https://drive.google.com/file/d/1EBh1nkZ-Wt-X9nT7rVlTTR-VQOPEtGmC/view?usp=sharing",
+      resumePdf: "/resume.pdf",
     },
     heroTechBadges: [
       { name: "MERN Stack", icon: "react" },
